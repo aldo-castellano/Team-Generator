@@ -1,0 +1,50 @@
+.wrapper{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    flex:1;
+    width: 100%;
+}
+.header{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+/* contentWrapper is the body, in order to create the responsive attributes */
+.contenWrapper{ 
+    width: 100%;
+    display:flex;
+    align-items: center;
+}
+.nameList{
+    height:10rem;
+    width: 100%;
+    border: solid black 1px;
+    border-radius: 5%;
+}
+.flexNameList{
+    display: flex;
+    flex-direction: column;
+}
+.flexContainer1{
+    margin:2%;
+    width:100%;
+}
+.teamsCreated{
+    margin:2%;
+    width:100%;
+}
+
+
+
+@media (min-width: 480px){
+    .contentWrapper{
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+    }
+    .flexContainer1{
+        width:50%;
+        align-items: center;
+    }
+}
