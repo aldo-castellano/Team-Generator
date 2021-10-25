@@ -1,5 +1,5 @@
 let nameList = document.getElementsByClassName("listed-names");
-let names = document.getElementById("names");
+let names = document.getElementById("participant");
 let teamsCreated = document.getElementsByClassName("teams-created");
 let listedName = [];
 let teams = document.getElementsByClassName("teams")
