@@ -1,4 +1,5 @@
-let nameList = document.getElementsByClassName("name-list");
+let nameList = document.getElementsByClassName("listed-names");
+let names = document.getElementById("names");
 let teamsCreated = document.getElementsByClassName("teams-created");
 let listedName = [];
 let teams = document.getElementsByClassName("teams")
@@ -21,10 +22,22 @@ let copyArray = function (array) {
 let addName = function () {
     if (/[a-zA-Z]/.test(names.value)) {
         listedName.push(names.value);
-        printNames(nameList);
+        printNames(names.value, nameList);
     }
 
     names.value = '';
+
+
+}
+
+let printNames = function (text, target) {
+
+
+    let nameOfList = document.createElement('p');
+    nameOfList.classList.add("names-list");
+    nameOfList.innerHTML = text;
+
+    target.appendChild(nameOfList);
 
 
 }
