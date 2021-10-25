@@ -18,17 +18,18 @@
                         <form class= "participant">
                             <label for= "name">Name:</label><br>
                             <input type="text" id="name" name= "name">
-                            <input type="submit" value="submit">
+                            <input type="submit" value="submit" class="add-participant" onsubmit=" return addName(this)">
                         </form>
                         <form class= "team-sizes">
                             <label for= "tsize">Size:</label><br>
                             <input type="number" id="tsize" name= "tsize">
-                            <input type="submit" value="generate team">
+                            <input type="submit" value="generate team" class="team-size">
                         </form>
                     </div>
             </div>
             <div class="teams-created">
-                <h1>Teams Created</h1>
+                <h2>Teams Created</h2>
+                <div class="teams">individual teams</div>
             </div>
         </main>
     </body>
