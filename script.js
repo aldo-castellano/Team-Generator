@@ -1,5 +1,5 @@
-let nameList = document.getElementsByClassName("listed-names");
-let names = document.getElementById("participant");
+let nameList = document.getElementsByClassName("listed-names"); //this is the target, where I want the new names to go
+let names = document.forms["participant"]["names"];
 let teamsCreated = document.getElementsByClassName("teams-created");
 let listedName = [];
 let teams = document.getElementsByClassName("teams")
