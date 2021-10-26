@@ -1,7 +1,7 @@
 let nameList = document.getElementsByClassName("listed-names"); //this is the target, where I want the new names to go
-let names = document.forms["participant"]["names"];
+let names = document.forms["participant"]["names"].value;
 let teamsCreated = document.getElementsByClassName("teams-created");
-let listedName = [];
+let list = [];
 let teams = document.getElementsByClassName("teams")
 let addParticipant = document.getElementsByClassName("add-participant")
 let selectSize = document.getElementsByClassName("team-size")
@@ -19,13 +19,14 @@ let copyArray = function (array) {
     return copy
 }
 
+//Me esta generando el array pero no me esta incluyendo los valores. No se si estoy asignando mal las clases
 let addName = function () {
-    if (/[a-zA-Z]/.test(names.value)) {
-        listedName.push(names.value);
-        printNames(names.value, nameList);
+    if (/[a-zA-Z]/.test(names)) {
+        list.push(names);
+        printNames(names, nameList);
     }
 
-    names.value = '';
+    return names = '';
 
 
 }
@@ -33,7 +34,7 @@ let addName = function () {
 let printNames = function (text, target) {
 
 
-    let nameOfList = document.createElement('p');
+    let nameOfList = document.createElement('li');
     nameOfList.classList.add("names-list");
     nameOfList.innerHTML = text;
 
