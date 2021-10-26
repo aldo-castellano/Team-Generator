@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Team Generator</title>
-        <link rel="stylesheet" href="teamGeneratorProject.css">
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body class= "body">
@@ -11,26 +11,30 @@
             <h1>Team Generator<h1>
         </header>
         <main class= "main">
-            <div class="main-container1">
+            <div class="main-container">
                     <div class= "name-list">
+                        <ol class="listed-names">
+
+                        </ol>
                     </div>
                     <div class= "flex-name-list">
-                        <form class= "participant">
-                            <label for= "name">Name:</label><br>
-                            <input type="text" id="name" name= "name">
+                        <form class= "participant" onsubmit=" return addName(this)">
+                            <label for= "names">Name:</label><br>
+                            <input type="text" class="names" id="names" name= "names">
                             <input type="submit" value="submit">
                         </form>
                         <form class= "team-sizes">
                             <label for= "tsize">Size:</label><br>
                             <input type="number" id="tsize" name= "tsize">
-                            <input type="submit" value="generate team">
+                            <input type="submit" value="generate team" class="team-size"/>
                         </form>
                     </div>
             </div>
             <div class="teams-created">
-                <h1>Teams Created</h1>
+                <h2>Teams Created</h2>
+                <div class="teams">individual teams</div>
             </div>
         </main>
     </body>
-    <script src="style.js"></script>
+    <script src="script.js"></script>
 </html>
