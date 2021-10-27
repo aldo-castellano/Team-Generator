@@ -1,39 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Generator</title>
-    <link rel="stylesheet" href="teamGeneratorProject.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"
+        integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0"
+        crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="body">
+<body class="container">
     <header class="header">
         <h1>Team Generator<h1>
     </header>
     <main class="main">
-        <div class="main-container1">
-            <div class="name-list">
+        <div class="main-container ">
+            <div class="list-container box">
+                <ol class="listed-names">
+
+                </ol>
             </div>
-            <div class="flex-name-list">
-                <form class="participant">
-                    <label for="name">Name:</label><br>
-                    <input type="text" id="name" name="name">
-                    <input type="submit" value="submit" class="btn-name">
+            <div class="name-container">
+                <form class="participant" name="participant" onsubmit="addName(event)">
+                    <label for="names">Name</label>
+                    <input type="text" class="names box" id="names" name="names"
+                        placeholder="Nombre de cada integrante">
+                    <input type="submit" value="submit" class="btn">
                 </form>
-                <form class="team-sizes">
-                    <label for="tsize">Size:</label><br>
-                    <input type="number" id="tsize" name="tsize">
-                    <input type="submit" value="generate team">
+                <form class="team-sizes" name="teamSize" onsubmit="generator(event)">
+                    <label for="size">Size</label>
+                    <input type="number" id="size" name="size" class="box" placeholder="0">
+                    <input type="submit" value="generate team" class="team-size btn" />
                 </form>
             </div>
         </div>
-        <div class="teams-created">
-            <h1>Teams Created</h1>
+        <div class="teams-container">
+            <h2>Teams Created</h2>
+            <div class="teams">
+
+            </div>
         </div>
     </main>
+    <!-- <i class="far fa-trash-alt"></i> -->
 </body>
 <script src="script.js"></script>
-
 
 </html>

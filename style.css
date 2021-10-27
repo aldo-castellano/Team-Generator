@@ -1,50 +1,206 @@
-.body{
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    flex:1;
-    width: 100%;
+/* generals */
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
-.header{
-    width: 100%;
+
+*::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+*::-webkit-scrollbar:vertical {
+    width: 10px;
+    border-radius: 10px;
+    background-color: #f1f2f3;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #2B2B2B;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    color: #F69A56;
+    font-size: 3.4rem;
+    text-align: center;
+    margin: 0;
+}
+
+li {
+    font-size: 1.8rem;
+}
+
+label {
+    font-size: 2.4rem;
+    color: #ffffff;
+    /* margin-bottom: 1.6rem; */
+    margin-top: 1.6rem;
+}
+
+.box {
+    font-size: 1.6rem;
+    border-radius: .6rem;
+    border: none;
+    padding: 1rem;
+    outline: none;
+    max-width: 40rem;
+    border: .2rem solid #F69A56;
+    text-transform: capitalize;
+}
+
+.container {
+    width: 90%;
+    max-width: 1080px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.btn {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem 5rem;
+    margin: 0;
+    background-color: #F69A56;
+    color: #ffffff;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+}
+
+/* main */
+
+.header {
+    height: 10vh;
+    padding: 1rem;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-container {
+    flex-basis: 50%;
+    flex-grow: 1;
+    min-height: calc(100vh - 10vh);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+    padding-right: 2rem;
+    align-items: center;
+}
+
+.name-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
     text-align: center;
     align-items: center;
 }
-/* contentWrapper is the body, in order to create the responsive attributes */
-.main{ 
+
+.list-container {
+    min-height: 20rem;
+    max-height: 20rem;
+    background-color: #ffffff;
     width: 100%;
-    display:flex;
-    align-items: center;
+    overflow: auto;
 }
-.name-list{
-    height:10rem;
+
+.names-list {
+    margin-bottom: .5rem;
+}
+
+.list-name-container {
+    display: inline-flex;
+    justify-content: space-between;
     width: 100%;
-    border: solid black 1px;
-    border-radius: 5%;
 }
-.flex-name-list{
-    display: flex;
+
+.gola {
+    background-image: url("img/trash-alt-regular.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.name-container form {
+    display: inline-flex;
     flex-direction: column;
-}
-.flex-container1{
-    margin:2%;
-    width:100%;
-}
-.teams-created{
-    margin:2%;
-    width:100%;
+    row-gap: 1rem;
 }
 
+.teams-container {
+    flex-basis: 50%;
+    flex-grow: 1;
+    padding-left: 2rem;
+    overflow: auto;
+    padding: 2rem;
+}
 
+.teams-container h2 {
+    color: #F69A56;
+    font-size: 2.4rem;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 2rem;
+}
 
-@media (min-width: 480px){
-    .contentWrapper{
-        display: flex;
-        flex-flow: row;
-        align-items: center;
+.team {
+    height: 20rem;
+    background-color: #ffffff;
+    border-radius: .6rem;
+    margin-bottom: 3.2rem;
+    margin-top: 0rem;
+    width: 100%;
+    min-width: 20rem;
+    flex-basis: 47%;
+    flex-grow: 1;
+}
+
+.team h3 {
+    font-size: 1.8rem;
+    text-align: center;
+    background-color: #F69A56;
+    padding: 1rem;
+    margin-top: 0;
+    border-radius: .6rem .6rem 0 0;
+    color: #ffffff;
+}
+
+@media (min-width: 480px) {
+    .teams-container {
+        max-height: calc(90vh - 8.1rem);
+        min-height: 55rem;
+        padding-left: 2rem;
     }
-    .flexContainer1{
-        width:50%;
-        align-items: center;
+    .team-container {
+        overflow: auto;
+        padding-right: 1rem;
+    }
+    .main-container {
+        min-height: none;
     }
 }
