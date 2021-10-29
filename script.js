@@ -12,7 +12,7 @@ let addName = function (event) {
     event.preventDefault()
     const names = document.forms["participant"]["names"].value;
 
-    if (/[a-zA-Z]/.test(names)) {
+    if (/[a-zA-Z]/.test(names) && (list.includes(names) === false)) {
         list.push(names);
         printNames(names, nameList);
     }
