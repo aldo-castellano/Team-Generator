@@ -95,18 +95,19 @@ let generator = function (event) {
     let sizeTeam = document.forms["teamSize"]["size"].value;
     sizeTeam = parseInt(sizeTeam);
     teams.innerHTML = "";
+    let invalid = document.querySelector("#alert").classList.add("invalid");
+
     if (sizeTeam <= 0 || /[a-zA-Z]/.test(sizeTeam) || (sizeTeam >= list.length)) {
 
-        let invalid = document.querySelector("#alert").classList.add("invalid");
-
+        return invalid
 
     } else {
-
+        document.querySelector("#alert").classList.remove("invalid");
         console.log(typeof sizeTeam)
         generatorTeams(sizeTeam)
 
     }
-    invalid.classList.remove("invalid")
+
 
 
 
