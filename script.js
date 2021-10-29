@@ -14,7 +14,7 @@ let addName = function (event) {
 
     if (/[a-zA-Z]/.test(names)) {
         list.push(names);
-        printNames(names, nameList);
+        printNames(list, nameList);
     }
 
     inputName.value = '';
@@ -23,20 +23,22 @@ let addName = function (event) {
 
 
 let printNames = function (text, target) {
+    nameList.innerHTML = '';
+    text.forEach(element => {
+        let divListName = document.createElement('div');
+        divListName.classList.add("list-name-container");
+
+        target.appendChild(divListName);
+
+        let nameOfList = document.createElement('li');
+        nameOfList.classList.add("names-list");
+        nameOfList.innerHTML = element;
+        divListName.appendChild(nameOfList);
 
 
-    let divListName = document.createElement('div');
-    divListName.classList.add("list-name-container");
+        printDelateBoton(divListName)
+    });
 
-    target.appendChild(divListName);
-
-    let nameOfList = document.createElement('li');
-    nameOfList.classList.add("names-list");
-    nameOfList.innerHTML = text;
-    divListName.appendChild(nameOfList);
-
-
-    printDelateBoton(divListName)
 
 
 
@@ -95,9 +97,14 @@ let generator = function (event) {
     let sizeTeam = document.forms["teamSize"]["size"].value;
     sizeTeam = parseInt(sizeTeam);
     teams.innerHTML = "";
+    let aviso = document.querySelector(".alerta")
     if (sizeTeam <= 0 || /[a-zA-Z]/.test(sizeTeam) || (sizeTeam >= list.length)) {
 
-        return alert("No introduciste un numero valido");
+        // return alert("No introduciste un numero valido");
+        return aviso.classList.add('display')
+
+    } else {
+        aviso.classList.remove('display')
     }
     console.log(typeof sizeTeam)
     generatorTeams(sizeTeam)
@@ -110,16 +117,13 @@ let lista = function (a) {
 
     a.addEventListener('click', function (e) {
 
-        // hola.id = ""
         let hola = document.querySelectorAll('.gola');
 
         for (let i = 0; i < hola.length; i++) {
             hola[i].setAttribute('id', '');
             hola[i].setAttribute('id', `${i}`);
         }
-
         let chao = parseInt(e.target.attributes.id.value);
-
 
         console.log(chao)
         delate(chao)
@@ -147,3 +151,36 @@ let printDelateBoton = function (target) {
 
     lista(btnContainer)
 }
+
+let provar = nameList.addEventListener("paste", function (event) {
+
+    let paste = (event.clipboardData || window.clipboardData).getData('text').split('\n');
+    // let hola = paste;
+
+    paste.forEach(element => {
+        list.push(element);
+        printNames(list, nameList);
+    });
+
+
+    event.preventDefault();
+
+
+});
+
+
+nameList.addEventListener("keydown", function (event) {
+    var key = event.key;
+    var cmd_key = event.metaKey;
+    var ctrl_key = event.ctrlKey;
+    if ((cmd_key && key == "v") || (ctrl_key && key == "v")) {
+        return true;
+    } else {
+        event.preventDefault();
+    }
+});
+let prueba = document.querySelector(".epa")
+prueba.addEventListener("click", function () {
+    nameList.focus();
+    document.execCommand("paste");
+});
