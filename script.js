@@ -97,10 +97,16 @@ let generator = function (event) {
     teams.innerHTML = "";
     if (sizeTeam <= 0 || /[a-zA-Z]/.test(sizeTeam) || (sizeTeam >= list.length)) {
 
-        return alert("No introduciste un numero valido");
+        let invalid = document.querySelector("#alert").classList.add("invalid");
+
+
+    } else {
+
+        console.log(typeof sizeTeam)
+        generatorTeams(sizeTeam)
+
     }
-    console.log(typeof sizeTeam)
-    generatorTeams(sizeTeam)
+    invalid.classList.remove("invalid")
 
 
 
