@@ -12,7 +12,7 @@ let addName = function (event) {
     event.preventDefault()
     const names = document.forms["participant"]["names"].value;
 
-    if (/[a-zA-Z]/.test(names)) {
+    if (/[a-zA-Z]/.test(names) && (list.includes(names) === false)) {
         list.push(names);
         printNames(list, nameList);
     }
@@ -97,18 +97,20 @@ let generator = function (event) {
     let sizeTeam = document.forms["teamSize"]["size"].value;
     sizeTeam = parseInt(sizeTeam);
     teams.innerHTML = "";
-    let aviso = document.querySelector(".alerta")
+    let alert = document.querySelector(".alert");
+
     if (sizeTeam <= 0 || /[a-zA-Z]/.test(sizeTeam) || (sizeTeam >= list.length)) {
 
-        // return alert("No introduciste un numero valido");
-        return aviso.classList.add('display')
+        return alert.classList.add("invalid")
 
     } else {
-        aviso.classList.remove('display')
-    }
-    console.log(typeof sizeTeam)
-    generatorTeams(sizeTeam)
+        alert.classList.remove("invalid");
 
+
+
+    }
+
+    generatorTeams(sizeTeam)
 
 
 }
@@ -152,14 +154,17 @@ let printDelateBoton = function (target) {
     lista(btnContainer)
 }
 
-let provar = nameList.addEventListener("paste", function (event) {
+let probar = nameList.addEventListener("paste", function (event) {
 
     let paste = (event.clipboardData || window.clipboardData).getData('text').split('\n');
     // let hola = paste;
 
     paste.forEach(element => {
-        list.push(element);
-        printNames(list, nameList);
+        if (/[a-zA-Z]/.test(element) && (list.includes(element) === false)) {
+            list.push(element);
+            printNames(list, nameList);
+        }
+
     });
 
 
@@ -170,17 +175,12 @@ let provar = nameList.addEventListener("paste", function (event) {
 
 
 nameList.addEventListener("keydown", function (event) {
-    var key = event.key;
-    var cmd_key = event.metaKey;
-    var ctrl_key = event.ctrlKey;
+    let key = event.key;
+    let cmd_key = event.metaKey;
+    let ctrl_key = event.ctrlKey;
     if ((cmd_key && key == "v") || (ctrl_key && key == "v")) {
         return true;
     } else {
         event.preventDefault();
     }
-});
-let prueba = document.querySelector(".epa")
-prueba.addEventListener("click", function () {
-    nameList.focus();
-    document.execCommand("paste");
 });

@@ -16,7 +16,7 @@
 
 <body class="container">
     <header class="header">
-        <h1 class="epa">Team Generator<h1>
+        <h1>Team Generator<h1>
     </header>
     <main class="main">
         <div class="main-container ">
@@ -37,9 +37,7 @@
                 <form class="team-sizes" name="teamSize" onsubmit="generator(event)">
                     <label for="size">Tamaño Equipo</label>
                     <input type="number" id="size" name="size" class="box" placeholder="0">
-
-                    <p class="alerta">tiene que escribir un valor valido</p>
-
+                    <p class="alert">Invalid Input</p>
                     <input type="submit" value="generate team" class="team-size btn" />
                 </form>
             </div>

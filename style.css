@@ -111,6 +111,11 @@ label {
     align-items: center;
 }
 
+.paste-list {
+    color: #ffffff;
+    font-size: 2.4rem;
+}
+
 .name-container {
     display: flex;
     flex-direction: column;
@@ -120,9 +125,15 @@ label {
     align-items: center;
 }
 
-.paste-list {
-    font-size: 2.4rem;
-    color: #ffffff;
+.alert {
+    display: none;
+}
+
+.invalid {
+    display: block;
+    color: red;
+    font-size: 2rem;
+    margin: 0;
 }
 
 .list-container {
@@ -132,6 +143,7 @@ label {
     width: 100%;
     overflow: scroll;
     padding: 2rem;
+    cursor: pointer;
 }
 
 .listed-names {
@@ -197,6 +209,7 @@ label {
     min-width: 20rem;
     flex-basis: 47%;
     flex-grow: 1;
+    /* text-align: start; */
 }
 
 .team h3 {
@@ -207,6 +220,11 @@ label {
     margin-top: 0;
     border-radius: .6rem .6rem 0 0;
     color: #ffffff;
+}
+
+.team li {
+    margin-left: 2rem;
+    text-align: start;
 }
 
 @media (min-width: 480px) {
@@ -222,17 +240,4 @@ label {
     .main-container {
         min-height: none;
     }
-}
-
-.alerta {
-    display: none;
-}
-
-.display {
-    display: inline;
-}
-
-.click {
-    /* border: .2rem solid #fc6a02; */
-    background-color: rgb(197, 197, 197);
 }
