@@ -20,28 +20,30 @@
     </header>
     <main class="main">
         <div class="main-container ">
+            <p class="paste-list">Pegar una lista aqui</p>
             <div class="list-container box">
-                <ol class="listed-names">
+                <ol contenteditable="true" placeholder="hola" class="listed-names">
 
                 </ol>
             </div>
             <div class="name-container">
                 <form class="participant" name="participant" onsubmit="addName(event)">
-                    <label for="names">Name</label>
+                    <label for="names">Nombres</label>
                     <input type="text" class="names box" id="names" name="names"
                         placeholder="Nombre de cada integrante">
+
                     <input type="submit" value="submit" class="btn">
                 </form>
                 <form class="team-sizes" name="teamSize" onsubmit="generator(event)">
-                    <label for="size">Size</label>
+                    <label for="size">Tamaño Equipo</label>
                     <input type="number" id="size" name="size" class="box" placeholder="0">
-                    <p class="alert" id="alert">Invalid Input</p>
+                    <p class="alert">Invalid Input</p>
                     <input type="submit" value="generate team" class="team-size btn" />
                 </form>
             </div>
         </div>
         <div class="teams-container">
-            <h2>Teams Created</h2>
+            <h2>Equipos</h2>
             <div class="teams">
 
             </div>

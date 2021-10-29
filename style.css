@@ -4,23 +4,23 @@
     box-sizing: inherit;
 }
 
-*::-webkit-scrollbar {
+.list-container::-webkit-scrollbar, .teams-container::-webkit-scrollbar {
     -webkit-appearance: none;
 }
 
-*::-webkit-scrollbar:vertical {
+.list-container::-webkit-scrollbar:vertical, .teams-container::-webkit-scrollbar:vertical {
     width: 10px;
     border-radius: 10px;
     background-color: #f1f2f3;
 }
 
-*::-webkit-scrollbar-thumb {
+.list-container::-webkit-scrollbar-thumb, .teams-container::-webkit-scrollbar-thumb {
     background-color: #797979;
     border-radius: 20px;
     border: 2px solid #f1f2f3;
 }
 
-*::-webkit-scrollbar-track {
+.list-container::-webkit-scrollbar-track, .teams-container::-webkit-scrollbar-track {
     border-radius: 10px;
 }
 
@@ -30,7 +30,7 @@ html {
 }
 
 body {
-    background-color: #2B2B2B;
+    background-color: #272727;
     margin: 0;
     font-family: 'Roboto', sans-serif;
 }
@@ -111,6 +111,11 @@ label {
     align-items: center;
 }
 
+.paste-list {
+    color: #ffffff;
+    font-size: 2.4rem;
+}
+
 .name-container {
     display: flex;
     flex-direction: column;
@@ -120,13 +125,15 @@ label {
     align-items: center;
 }
 
-.alert{
-    display:none;
+.alert {
+    display: none;
 }
 
-.invalid{
-    display:block;
+.invalid {
+    display: block;
     color: red;
+    font-size: 2rem;
+    margin: 0;
 }
 
 .list-container {
@@ -134,7 +141,22 @@ label {
     max-height: 20rem;
     background-color: #ffffff;
     width: 100%;
-    overflow: auto;
+    overflow: scroll;
+    padding: 2rem;
+    cursor: pointer;
+}
+
+.listed-names {
+    border: none;
+    min-height: 15rem;
+    max-height: 20rem;
+    background-color: #ffffff;
+    width: 100%;
+    /* overflow: hidden; */
+    outline: none;
+    margin: 0;
+    caret-color: #ffffff00;
+    cursor: pointer;
 }
 
 .names-list {
@@ -187,6 +209,7 @@ label {
     min-width: 20rem;
     flex-basis: 47%;
     flex-grow: 1;
+    /* text-align: start; */
 }
 
 .team h3 {
@@ -197,6 +220,11 @@ label {
     margin-top: 0;
     border-radius: .6rem .6rem 0 0;
     color: #ffffff;
+}
+
+.team li {
+    margin-left: 2rem;
+    text-align: start;
 }
 
 @media (min-width: 480px) {
