@@ -1,13 +1,11 @@
 let list = [];
 const nameList = document.querySelector(".listed-names"); //this is the target, where I want the new names to go
 const inputName = document.querySelector(".names")
-
 const teams = document.querySelector(".teams");
-// let btnDelate = document.querySelector
+let allTeamContainers = document.querySelectorAll('.team');
+let alert = document.querySelector(".alert");
 
-// console.log(teams)
 
-//Me esta generando el array pero no me esta incluyendo los valores. No se si estoy asignando mal las clases
 let addName = function (event) {
     event.preventDefault()
     const names = document.forms["participant"]["names"].value;
@@ -35,15 +33,23 @@ let printNames = function (text, target) {
         nameOfList.innerHTML = element;
         divListName.appendChild(nameOfList);
 
-
-        printDelateBoton(divListName)
+        printDeleteButton(divListName)
     });
 
 
 
 
 }
+let printDeleteButton = function (target) {
+    let btnContainer = document.createElement('div');
+    btnContainer.classList.add("icon-remove");
+
+    target.appendChild(btnContainer);
+    btnContainer.addEventListener('click', buttonRemoveName);
+
+}
 let printNameTeam = function (text, target) {
+
     let nameOfList = document.createElement('li');
 
     nameOfList.innerHTML = text;
@@ -58,6 +64,7 @@ let generatorTeams = function (sizeTeam) {
     let i = 0
 
     while (i < numberOfTeams) {
+
         if (copyArr.length > 1) {
             let team = document.createElement('div');
             team.classList.add("team");
@@ -80,9 +87,9 @@ let generatorTeams = function (sizeTeam) {
             }
 
         } else {
-            let teamsRemove = document.querySelectorAll('.team');
 
-            return printNameTeam(`${copyArr[0]}`, teamsRemove[teamsRemove.length - 1]);
+
+            return printNameTeam(`${copyArr[0]}`, allTeamContainers[allTeamContainers.length - 1]);
         }
         i++
     }
@@ -97,7 +104,7 @@ let generator = function (event) {
     let sizeTeam = document.forms["teamSize"]["size"].value;
     sizeTeam = parseInt(sizeTeam);
     teams.innerHTML = "";
-    let alert = document.querySelector(".alert");
+
 
     if (sizeTeam <= 0 || /[a-zA-Z]/.test(sizeTeam) || (sizeTeam >= list.length)) {
 
@@ -105,59 +112,39 @@ let generator = function (event) {
 
     } else {
         alert.classList.remove("invalid");
-
-
-
     }
 
-    generatorTeams(sizeTeam)
+    generatorTeams(sizeTeam);
+
+}
+
+let buttonRemoveName = event => {
+
+    let trashbin = document.querySelectorAll('.icon-remove');
+
+    for (let i = 0; i < trashbin.length; i++) {
+        trashbin[i].setAttribute('id', '');
+        trashbin[i].setAttribute('id', `${i}`);
+    }
+    let eventPosition = parseInt(event.target.attributes.id.value);
+
+    deleteName(eventPosition)
 
 
 }
 
-let lista = function (a) {
+let deleteName = function (position) {
 
-    a.addEventListener('click', function (e) {
-
-        let hola = document.querySelectorAll('.gola');
-
-        for (let i = 0; i < hola.length; i++) {
-            hola[i].setAttribute('id', '');
-            hola[i].setAttribute('id', `${i}`);
-        }
-        let chao = parseInt(e.target.attributes.id.value);
-
-        console.log(chao)
-        delate(chao)
-
-
-
-
-
-    })
-}
-
-let delate = function (position) {
-    const div = document.querySelectorAll(".list-name-container");
-    console.log(position)
-
-    div[position].remove()
+    const allNameContainer = document.querySelectorAll(".list-name-container");
+    allNameContainer[position].remove()
     list.splice(position, 1);
 
 }
-let printDelateBoton = function (target) {
-    let btnContainer = document.createElement('div');
-    btnContainer.classList.add("gola");
 
-    target.appendChild(btnContainer);
 
-    lista(btnContainer)
-}
+nameList.addEventListener("paste", function (event) {
 
-let probar = nameList.addEventListener("paste", function (event) {
-
-    let paste = (event.clipboardData || window.clipboardData).getData('text').split('\n');
-    // let hola = paste;
+    let paste = (event.clipboardData).getData('text').split('\n');
 
     paste.forEach(element => {
         if (/[a-zA-Z]/.test(element) && (list.includes(element) === false)) {
@@ -166,11 +153,7 @@ let probar = nameList.addEventListener("paste", function (event) {
         }
 
     });
-
-
     event.preventDefault();
-
-
 });
 
 
