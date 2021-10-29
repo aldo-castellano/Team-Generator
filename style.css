@@ -120,6 +120,15 @@ label {
     align-items: center;
 }
 
+.alert{
+    display:none;
+}
+
+.invalid{
+    display:block;
+    color: red;
+}
+
 .list-container {
     min-height: 20rem;
     max-height: 20rem;

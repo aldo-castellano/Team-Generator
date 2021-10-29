@@ -12,7 +12,7 @@ let addName = function (event) {
     event.preventDefault()
     const names = document.forms["participant"]["names"].value;
 
-    if (/[a-zA-Z]/.test(names)) {
+    if (/[a-zA-Z]/.test(names) && (list.includes(names) === false)) {
         list.push(names);
         printNames(names, nameList);
     }
@@ -95,12 +95,19 @@ let generator = function (event) {
     let sizeTeam = document.forms["teamSize"]["size"].value;
     sizeTeam = parseInt(sizeTeam);
     teams.innerHTML = "";
+    let invalid = document.querySelector("#alert").classList.add("invalid");
+
     if (sizeTeam <= 0 || /[a-zA-Z]/.test(sizeTeam) || (sizeTeam >= list.length)) {
 
-        return alert("No introduciste un numero valido");
+        return invalid
+
+    } else {
+        document.querySelector("#alert").classList.remove("invalid");
+        console.log(typeof sizeTeam)
+        generatorTeams(sizeTeam)
+
     }
-    console.log(typeof sizeTeam)
-    generatorTeams(sizeTeam)
+
 
 
 
