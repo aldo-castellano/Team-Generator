@@ -4,23 +4,23 @@
     box-sizing: inherit;
 }
 
-.list-container::-webkit-scrollbar, .teams-container::-webkit-scrollbar {
+.list-container::-webkit-scrollbar, .teams-container::-webkit-scrollbar, .team::-webkit-scrollbar {
     -webkit-appearance: none;
 }
 
-.list-container::-webkit-scrollbar:vertical, .teams-container::-webkit-scrollbar:vertical {
+.list-container::-webkit-scrollbar:vertical, .teams-container::-webkit-scrollbar:vertical, .team::-webkit-scrollbar:vertical {
     width: 10px;
     border-radius: 10px;
     background-color: #f1f2f3;
 }
 
-.list-container::-webkit-scrollbar-thumb, .teams-container::-webkit-scrollbar-thumb {
+.list-container::-webkit-scrollbar-thumb, .teams-container::-webkit-scrollbar-thumb, .team::-webkit-scrollbar-thumb {
     background-color: #797979;
     border-radius: 20px;
     border: 2px solid #f1f2f3;
 }
 
-.list-container::-webkit-scrollbar-track, .teams-container::-webkit-scrollbar-track {
+.list-container::-webkit-scrollbar-track, .teams-container::-webkit-scrollbar-track, .team::-webkit-scrollbar-track {
     border-radius: 10px;
 }
 
@@ -211,6 +211,7 @@ label {
     flex-basis: 47%;
     flex-grow: 1;
     padding: 0;
+    overflow: auto;
 }
 
 .team h3 {
