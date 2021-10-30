@@ -1,8 +1,8 @@
 let list = [];
-const nameList = document.querySelector(".listed-names"); //this is the target, where I want the new names to go
+const nameList = document.querySelector(".listed-names");
 const teams = document.querySelector(".teams");
 
-
+// click event that adds each name to an array and DOM
 let addName = function (event) {
     event.preventDefault()
     const names = document.forms["participant"]["names"].value;
@@ -16,7 +16,7 @@ let addName = function (event) {
 
 }
 
-
+// prints the names in the list of names
 let printNames = function (text, target) {
     nameList.innerHTML = '';
     text.forEach(element => {
@@ -37,6 +37,7 @@ let printNames = function (text, target) {
 
 
 }
+// prints the trash icon container
 let printDeleteButton = target => {
     let btnContainer = document.createElement('a');
     btnContainer.classList.add("icon-remove");
@@ -45,6 +46,7 @@ let printDeleteButton = target => {
     btnContainer.addEventListener('click', buttonRemoveName);
 
 }
+// prints the names on each team
 let printNameOnTeam = (text, target) => {
 
     let nameOfList = document.createElement('li');
@@ -53,7 +55,7 @@ let printNameOnTeam = (text, target) => {
     target.appendChild(nameOfList);
 }
 
-
+// generates the team number, the containers of each team and assigns each name to each team
 let generatorTeams = sizeTeam => {
 
     const numberOfTeams = list.length / sizeTeam;
@@ -95,7 +97,7 @@ let generatorTeams = sizeTeam => {
 }
 
 
-
+// submit event that calls that triggers the team generation
 let generator = function (event) {
     event.preventDefault()
     let sizeTeam = document.forms["teamSize"]["size"].value;
@@ -115,6 +117,7 @@ let generator = function (event) {
 
 }
 
+// event click on the trash can icon to remove name
 let buttonRemoveName = event => {
 
     let trashbin = document.querySelectorAll('.icon-remove');
@@ -129,7 +132,7 @@ let buttonRemoveName = event => {
 
 
 }
-
+// removes the name from the list and array
 let deleteName = function (position) {
 
     const allNameContainer = document.querySelectorAll(".list-name-container");
@@ -138,7 +141,7 @@ let deleteName = function (position) {
 
 }
 
-
+// paste event so that you can paste a list of names
 nameList.addEventListener("paste", function (event) {
 
     let paste = (event.clipboardData).getData('text').split('\n');
@@ -153,7 +156,7 @@ nameList.addEventListener("paste", function (event) {
     event.preventDefault();
 });
 
-
+// locks the name list so that only one text can be pasted
 nameList.addEventListener("keydown", function (event) {
     let key = event.key;
     let cmd_key = event.metaKey;
