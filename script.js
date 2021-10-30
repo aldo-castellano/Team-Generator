@@ -1,15 +1,12 @@
 let list = [];
 const nameList = document.querySelector(".listed-names"); //this is the target, where I want the new names to go
-const inputName = document.querySelector(".names")
 const teams = document.querySelector(".teams");
-let allTeamContainers = document.querySelectorAll('.team');
-let alert = document.querySelector(".alert");
 
 
 let addName = function (event) {
     event.preventDefault()
     const names = document.forms["participant"]["names"].value;
-
+    const inputName = document.querySelector(".names")
     if (/[a-zA-Z]/.test(names) && (list.includes(names) === false)) {
         list.push(names);
         printNames(list, nameList);
@@ -40,15 +37,15 @@ let printNames = function (text, target) {
 
 
 }
-let printDeleteButton = function (target) {
-    let btnContainer = document.createElement('div');
+let printDeleteButton = target => {
+    let btnContainer = document.createElement('a');
     btnContainer.classList.add("icon-remove");
 
     target.appendChild(btnContainer);
     btnContainer.addEventListener('click', buttonRemoveName);
 
 }
-let printNameTeam = function (text, target) {
+let printNameOnTeam = (text, target) => {
 
     let nameOfList = document.createElement('li');
 
@@ -57,7 +54,7 @@ let printNameTeam = function (text, target) {
 }
 
 
-let generatorTeams = function (sizeTeam) {
+let generatorTeams = sizeTeam => {
 
     const numberOfTeams = list.length / sizeTeam;
     let copyArr = [...list];
@@ -66,7 +63,7 @@ let generatorTeams = function (sizeTeam) {
     while (i < numberOfTeams) {
 
         if (copyArr.length > 1) {
-            let team = document.createElement('div');
+            let team = document.createElement('ol');
             team.classList.add("team");
             teams.appendChild(team);
 
@@ -79,7 +76,7 @@ let generatorTeams = function (sizeTeam) {
 
                 if (copyArr[random] !== undefined) {
 
-                    printNameTeam(`${copyArr[random]}`, team);
+                    printNameOnTeam(`${copyArr[random]}`, team);
 
                 }
 
@@ -87,9 +84,9 @@ let generatorTeams = function (sizeTeam) {
             }
 
         } else {
+            const allTeamContainers = document.querySelectorAll('.team');
 
-
-            return printNameTeam(`${copyArr[0]}`, allTeamContainers[allTeamContainers.length - 1]);
+            return printNameOnTeam(`${copyArr[0]}`, allTeamContainers[allTeamContainers.length - 1]);
         }
         i++
     }
@@ -105,8 +102,8 @@ let generator = function (event) {
     sizeTeam = parseInt(sizeTeam);
     teams.innerHTML = "";
 
-
-    if (sizeTeam <= 0 || /[a-zA-Z]/.test(sizeTeam) || (sizeTeam >= list.length)) {
+    let alert = document.querySelector(".alert");
+    if (sizeTeam <= 1 || /[a-zA-Z]/.test(sizeTeam) || (sizeTeam >= list.length)) {
 
         return alert.classList.add("invalid")
 
