@@ -7,16 +7,24 @@ let addName = function (event) {
     event.preventDefault()
     const names = document.forms["participant"]["names"].value;
     const inputName = document.querySelector(".names")
+    const invalidName = document.querySelector(".invalid-name")
+    invalidName.classList.remove('invalid')
     if (/[a-zA-Z]/.test(names) && (list.includes(names) === false)) {
         list.push(names);
         printNames(list, nameList);
+    } else {
+        return invalidName.classList.add('invalid')
     }
 
     inputName.value = '';
 
 }
 
-// prints the names in the list of names
+/* prints the names in the list of names
+*@param name{string}, html element {string}
+@return 
+
+*/
 let printNames = function (text, target) {
     nameList.innerHTML = '';
     text.forEach(element => {
@@ -73,17 +81,7 @@ let generatorTeams = sizeTeam => {
             nameTeam.innerHTML = `Equipo ${i + 1}`;
             team.appendChild(nameTeam);
 
-            for (let j = 0; j < sizeTeam; j++) {
-                let random = Math.floor((Math.random() * copyArr.length) + 0);
-
-                if (copyArr[random] !== undefined) {
-
-                    printNameOnTeam(`${copyArr[random]}`, team);
-
-                }
-
-                copyArr.splice(random, 1);
-            }
+            generatorNameOnTeam(sizeTeam, copyArr, team)
 
         } else {
             const allTeamContainers = document.querySelectorAll('.team');
@@ -95,7 +93,20 @@ let generatorTeams = sizeTeam => {
 
 
 }
+let generatorNameOnTeam = (sizeTeam, copyArr, team) => {
 
+    for (let j = 0; j < sizeTeam; j++) {
+        let random = Math.floor((Math.random() * copyArr.length) + 0);
+
+        if (copyArr[random] !== undefined) {
+
+            printNameOnTeam(`${copyArr[random]}`, team);
+
+        }
+
+        copyArr.splice(random, 1);
+    }
+}
 
 // submit event that calls that triggers the team generation
 let generator = function (event) {

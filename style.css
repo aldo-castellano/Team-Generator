@@ -125,7 +125,7 @@ label {
     align-items: center;
 }
 
-.alert {
+.alert, .invalid-name {
     display: none;
 }
 
@@ -227,6 +227,7 @@ label {
 .team li {
     margin-left: 4rem;
     text-align: start;
+    text-transform: capitalize;
 }
 
 @media (min-width: 480px) {
