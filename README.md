@@ -4,6 +4,9 @@
  
  ##COLABORATORS🤝
  
+ <a href="https://github.com/aldo-castellano/Team-Generator/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=aldo-castellano/Team-Generator" />
+</a>
  
  ##SCREAMSHOTS🖼️
 
